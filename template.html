@@ -1,0 +1,30 @@
+<div class="container">
+  <h4>{{$ctrl.users}}</h4>
+</div>
+<form action="#" novalidate ng-submit="$ctrl.showUsers()" name="usersForm" class="container">
+  <div class="form-group" ng-class="{'has-error' : $ctrl.usersForm.userName.$invalid && $ctrl.usersForm.userName.$dirty}">
+    <label class="control-label"for="userName">User Name:</label>
+    <input type="text" name="userName" id="userName" class="form-control" ng-model="$ctrl.user.userName"
+            ng-minlength=3 ng-maxlength=12 required />
+    <span ng-if="usersForm.userName.$error.required && usersForm.userName.$dirty">Username is required</span>
+    <span ng-if="usersForm.userName.$error.minlength">Username must be 3 characters long</span>
+    <span ng-if="usersForm.userName.$error.maxlength">Username can't be more than 12 characters long</span>
+  </div>
+
+  <div class="form-group" ng-class="{'has-error' : $ctrl.usersForm.password.$invalid && $ctrl.usersForm.password.$dirty}">
+    <label for="password">Password</label>
+    <input name="password" id="password" class="form-control" ng-model="$ctrl.user.password">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input name="email" id="email" class="form-control" ng-model="$ctrl.user.email">
+  </div>
+
+  <div class="form-group">
+    <label for="zipCode">Zip (5 digits)</label>
+    <input name="zipCode" id="zipCode" class="form-control" ng-model="$ctrl.user.zipCode">
+  </div>
+
+  <input type="submit" value="Submit" class="btn btn-primary">
+</form>
